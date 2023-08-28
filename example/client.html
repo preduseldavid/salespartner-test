@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<script>
+  async function sendRequest() {
+    // prepare the request
+    const params = [];
+    const requestData = {
+      jsonrpc: "2.0",
+      id: 1,
+      method: "getCars",
+      params: params,
+    };
+
+    // make the request
+    const response = await fetch("http://127.0.0.1:4321", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(requestData),
+    });
+
+    // process the response
+    const responseData = await response.json();
+    console.log(responseData);
+  }
+</script>
